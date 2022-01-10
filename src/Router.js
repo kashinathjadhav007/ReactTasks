@@ -1,6 +1,6 @@
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 import { AboutUs,DashBoard } from "./Page/index";
-import { Header } from "./Module/index";
+
 
 
 const Router=(prop)=>{
@@ -14,13 +14,8 @@ const Router=(prop)=>{
 
         </Routes>
         <Routes>
-            
-            <Route   path="" element={<Header/>}/>
-            
-        </Routes>
-        <Routes>
            
-            <Route  path="/about" element={<AboutUs myData={prop.data}/>}/>
+            <Route  path="/about" element={<AboutUs myData={prop.text}/>}/>
 
         </Routes>
         </BrowserRouter>

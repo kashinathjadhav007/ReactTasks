@@ -6,7 +6,8 @@ class Counter extends react.Component
     {
         super()
         this.state={
-            count:0
+            count:0,
+            count1:0
 
         }
 
@@ -32,6 +33,11 @@ class Counter extends react.Component
         
     }
 
+    componentDidMount() 
+    {
+        this.interval = setInterval(() => this.setState({ count1: this.state.count1+1 }), 100);
+    }
+    
     render()
     {
         return(
@@ -40,7 +46,10 @@ class Counter extends react.Component
             <br></br>
             <button onClick={()=>this.incrementFun()}>Add</button>
             <button onClick={()=>this.decrementFun()}>substract</button>
-            <button onClick={()=>this.resetFun()}>Reset</button></>
+            <button onClick={()=>this.resetFun()}>Reset</button>
+            <br></br>
+            <span>{this.state.count1}</span>
+             </>
         )
     }
 }
