@@ -10,7 +10,7 @@ const Header=()=>
                <UL>
                    <li>Contact</li>
                    <li>Dashboard</li>
-                   <li>About Us</li>
+                   <li><a href="http://localhost:3000/about">About US</a></li>
                </UL>
             </Nav>
         </div>

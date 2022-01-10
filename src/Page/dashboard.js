@@ -7,10 +7,7 @@ const Dashboard=()=>
                 <br></br>
                 <Header></Header>
                 <br></br>
-                <Button ButtonText="My Button" ButtonClass="varient"/>
-                <Button ButtonText="My Primary" ButtonClass="varient"/>
-                <Button ButtonText="My Secondary" ButtonClass="varient"/>
-                <Button ButtonText="My ternary" ButtonClass="varient"/>
+                <Button ButtonText="My Button"/>
 
                 <br></br>
                 

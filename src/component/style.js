@@ -43,7 +43,7 @@ export let Right1=styled.p
 
 
 export const Nav=styled.nav
-`background-color:black;
+`background-color:light-red;
 color:white;
 height:30px;`
 
@@ -52,6 +52,6 @@ export const UL=styled.ul
 justify-content:space-between`
 
 
-export const MyButton=styled.button
-`background-color:red;
-color:black`
+export const MyButton = styled.button`background-color: ${(props)=>props.color};
+color:white`
+ 

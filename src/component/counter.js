@@ -7,7 +7,7 @@ class Counter extends react.Component
         super()
         this.state={
             count:0,
-            count1:0
+            count1:10
 
         }
 
@@ -19,25 +19,20 @@ class Counter extends react.Component
         
         
     }
-    decrementFun()
-
-    {
+    decrementFun(){
         this.setState({count:this.state.count-1})
         
         
     }
-    resetFun()
-
-    {
+    resetFun(){
         this.setState({count:0})
         
     }
 
-    componentDidMount() 
-    {
-        this.interval = setInterval(() => this.setState({ count1: this.state.count1+1 }), 100);
+    componentDidMount(){
+        this.interval = setInterval(() => this.setState({ count1: this.state.count1+1 }), 1000);
     }
-    
+
     render()
     {
         return(

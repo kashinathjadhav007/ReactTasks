@@ -1,9 +1,6 @@
  import Router from "./Router";
  import { Header,Left,Right,Second,Left1} from "./component/style";
- 
- 
-
-const App=()=> 
+ const App=()=> 
 {
   const aboutdata={
     image:"./image/img.png",
@@ -15,10 +12,6 @@ const App=()=>
     right_h5:"Languages:",
     right_h6:"GREEK,ENGLISH,FRENCH",
     right_h7:"DOWNLOAD V.CARD"
-
-  
-
-
   }
   return (
     <div>
