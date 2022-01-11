@@ -1,8 +1,8 @@
 import { BrowserRouter,Routes,Route } from "react-router-dom";
-import { AboutUs,DashBoard,Register } from "./Page/index";
-
-
-
+import { AboutUs,DashBoard } from "./Page/index";
+import Login from "./Page/login"
+import Profile from "./Page/form";
+import Form from "./Page/form";
 const Router=(prop)=>{
     return(
     
@@ -10,8 +10,6 @@ const Router=(prop)=>{
         <BrowserRouter>
         <Routes>
             <Route   path="" element={<DashBoard/>}/>
-            
-
         </Routes>
         <Routes>
            
@@ -19,8 +17,16 @@ const Router=(prop)=>{
 
         </Routes>
         <Routes>
-            <Route path="" element={<Register/>}/>
+            <Route   path="" element={<Login/>}/>
         </Routes>
+    
+
+        <Routes>
+            <Route   path="/form" element={<Form/>}/>
+        </Routes>
+        
+       
+        
         
         </BrowserRouter>
     

@@ -1,5 +1,8 @@
  import Router from "./Router";
  import { Header,Left,Right,Second,Left1} from "./component/style";
+import Profile from "./Page/form";
+import Login from "./Page/login";
+
  const App=()=> 
 {
   const aboutdata={
@@ -16,6 +19,7 @@
   return (
     <div>
      <Router text={aboutdata}/>
+     
     </div>
   );
 }
