@@ -1,5 +1,5 @@
 import { BrowserRouter,Routes,Route } from "react-router-dom";
-import { AboutUs,DashBoard } from "./Page/index";
+import { AboutUs,DashBoard,Register } from "./Page/index";
 
 
 
@@ -18,6 +18,10 @@ const Router=(prop)=>{
             <Route  path="/about" element={<AboutUs myData={prop.text}/>}/>
 
         </Routes>
+        <Routes>
+            <Route path="" element={<Register/>}/>
+        </Routes>
+        
         </BrowserRouter>
     
 )

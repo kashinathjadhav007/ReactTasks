@@ -1,3 +1,4 @@
+
 import { Header,Left,Right,Second,Left1} from "../component/style";
 
 const aboutUsPage=(prop)=>
@@ -19,6 +20,7 @@ const aboutUsPage=(prop)=>
               </Right>
          
           </Header>
+          
           
                 </div>
         
