@@ -7,7 +7,7 @@ const Dashboard=()=>
                 <br></br>
                 <Header></Header>
                 <br></br>
-                <Button ButtonText="My Button"/>
+                <Button ButtonText="My Butt"/>
 
                 <br></br>
                 

@@ -43,7 +43,7 @@ export let Right1=styled.p
 
 
 export const Nav=styled.nav
-`background-color:light-red;
+`background-color:red;
 color:white;
 height:30px;`
 
