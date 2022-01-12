@@ -6,16 +6,10 @@ const Router=(prop)=>{
     return(
     <BrowserRouter>
         <Routes>
-          <Route path="" element={<DashBoard/>}/>
-        </Routes>
-        <Routes>
+          <Route path="/" element={<DashBoard/>}/>
           <Route path="/about" element={<AboutUs myData={prop.text}/>}/>
-        </Routes>
-        <Routes>
-            <Route path="" element={<Login/>}/>
-        </Routes>
-        <Routes>
-            <Route path="/form" element={<Form/>}/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/" element={<Form/>}/>
         </Routes>
         </BrowserRouter>
     
