@@ -9,12 +9,12 @@ const [counter, setCounter] = useState(0);
 
   useEffect(() => 
   {
-    if(counter>5)
+    if(counter>=20)
     {
         setCounter(0)
     }
     const interval = setInterval(() => {
-     if(counter<=5)
+     if(counter<21)
     {
         setCounter(counter + 1);
   
