@@ -1,7 +1,5 @@
  import Router from "./Router";
  import { Header,Left,Right,Second,Left1} from "./component/style";
- import LifeCycle from "./component/lifecycle";
- import Autocounter from "./Page/autocounter";
  const App=()=> 
 {
   const aboutdata={
@@ -18,8 +16,6 @@
   return (
     <div>
      <Router text={aboutdata}/>
-     <Autocounter/>
-     
     </div>
   );
 }

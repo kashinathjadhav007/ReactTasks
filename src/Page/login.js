@@ -2,17 +2,14 @@ import {useState} from "react"
 import {useNavigate} from "react-router-dom"
 import Form from "./form";
 import { Input,Label } from "../component/style";
-
 const Login =()=>{
-
-    const [users,setUsers] =useState(
+const [users,setUsers] =useState(
         {
             name: "",
             email:"",
             Password:"",
         }
     )
-    
     let navigate = useNavigate();
     const HandleChange =() =>{
       setUsers({
@@ -27,7 +24,6 @@ const Login =()=>{
     const redirectHandler =() =>{
         navigate('/form',{state: {users}})
     }
-
     return(
         <>
           <>
@@ -44,5 +40,4 @@ const Login =()=>{
         </>
     )
 }
-
 export default Login;

@@ -1,38 +1,26 @@
 import react from "react";
 class Counter extends react.Component
 {
-
     constructor()
     {
         super()
         this.state={
             count:0,
             count1:10
-
-        }
-
-    }
-    incrementFun()
-
-    {
+           }
+}
+incrementFun(){
         this.setState({count:this.state.count+1})
-        
-        
-    }
+        }
     decrementFun(){
         this.setState({count:this.state.count-1})
-        
-        
-    }
+        }
     resetFun(){
         this.setState({count:0})
-        
-    }
-
-    componentDidMount(){
+        }
+   componentDidMount(){
         this.interval = setInterval(() => this.setState({ count1: this.state.count1+1 }), 1000);
     }
-
     render()
     {
         return(

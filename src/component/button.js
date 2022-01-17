@@ -10,10 +10,6 @@ const Button=(prop)=>
         <br></br>
         <MyButton color="purple">{prop.ButtonText}</MyButton>
         <br></br>
-        
-        
-    </div>)
-    
-}
-
+        </div>)
+    }
 export default Button;

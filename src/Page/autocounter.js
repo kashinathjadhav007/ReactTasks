@@ -1,15 +1,10 @@
 import { useEffect,useState } from "react";
-import { unmountComponentAtNode } from "react-dom";
-
 const Autocounter=()=>
 {
- 
-const[counter,setCounter]=useState(0);
-
+ const[counter,setCounter]=useState(0);
 const SelfCounter=()=>
 {
     let cnt=0;
-
     const interval=setInterval(()=>
     {
         if(cnt<20)
@@ -24,17 +19,14 @@ const SelfCounter=()=>
         setCounter(cnt);
     },1000)
 }
- 
-    useEffect(()=>
+ useEffect(()=>
     {
         SelfCounter();
     },[])
-
     return(
         <>
-        <h1>Counts: {counter}</h1>
+        <h1>AutoCounter: {counter}</h1>
         </>
     )
 };
-
 export default Autocounter;
