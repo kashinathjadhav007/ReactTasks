@@ -1,24 +1,30 @@
 import { BrowserRouter,Routes,Route } from "react-router-dom";
-import { AboutUs,DashBoard } from "./Page/index";
+import { AboutUs,DashBoard,FormDialog,Register,LoginPage} from "./Page/index";
 import Login from "./Page/login"
 import Form from "./Page/form";
 import Autocounter from "./Page/autocounter";
-import { Header} from "./component/style";
+import { Button } from "./component";
 import { Counter } from "./component";
-import FormDialog from "./Page/formDialogue";
-
+import Contact from "./Page/contact";
+import WelcomePage from "./Page/welcomePage"
+import { PrivateRoute } from "./Route/privateRoute";
 const Router=(prop)=>{
     return(
     <BrowserRouter>
         <Routes>
           <Route path="/" element={<DashBoard/>}/>
+          <Route path="/contact" element={<Contact/>}/>
           <Route path="/about" element={<AboutUs myData={prop.text}/>}/>
           <Route path="/login" element={<Login/>}/>
+          <Route path="/button" element={<Button ButtonText="My Butt"/>}/>
           <Route path="/form" element={<Form/>}/>
           <Route path="/autocounter" element={<Autocounter/>}/>
           <Route path="/counter" element={<Counter/>}/>
           <Route path="/Muimodel" element={<FormDialog/>}/>
-        </Routes>
+          <Route path="/register" element={<Register/>}/>
+          <Route path="/loginpage" element={<LoginPage/>}/>
+          <Route path="/welcome" element={ <PrivateRoute><WelcomePage/></PrivateRoute>}/>
+          </Routes>
         </BrowserRouter>)
 }
 export default Router;

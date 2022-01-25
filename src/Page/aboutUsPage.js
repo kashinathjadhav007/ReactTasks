@@ -1,9 +1,12 @@
 import { Header,Left,Right,Second,Left1} from "../component/style";
-const aboutUsPage=(prop)=>
+import { useContext } from "react";
+import ThemeContext from "../Context/themeContext";
+const AboutUsPage=(prop)=>
 {
-    return (
+ const UseTheme= useContext(ThemeContext)
+return (
         <div>
-          <Header>
+          <Header style={UseTheme.theme}>
           <Left><img src={prop.myData.image}/>
           <p>{prop.myData.author}</p></Left>
             <Right>
@@ -20,5 +23,5 @@ const aboutUsPage=(prop)=>
         );
 }
 
-export default aboutUsPage;
+export default AboutUsPage;
 

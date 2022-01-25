@@ -22,7 +22,9 @@ const [users,setUsers] =useState(
     }
     let data = users;
     const redirectHandler =() =>{
+      
         navigate('/form',{state: {users}})
+        
     }
     return(
         <>
