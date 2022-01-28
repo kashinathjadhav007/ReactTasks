@@ -1,5 +1,5 @@
 const Validation=()=>{
-    let errors={Name:"",Email:"",Password:""}
+    let errors={}
 
     if(!/^[A-Za-z]+$/.test(Name))
     {

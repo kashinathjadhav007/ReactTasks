@@ -3,21 +3,43 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
-
-
-
 export default function Register() 
 {
   const [name, setName] = React.useState('');
   const [mail,setMail]=React.useState('')
   const [password,setPassword]=React.useState('')
+  const[nameError,setNameError]=React.useState(false)
+  const[mailError,setmailError]=React.useState(false)
+  const[passwordError,setPasswordError]=React.useState(false)
+  
   const nav=useNavigate();
   const handleSubmit=(e)=>
   {
+    e.preventDefault();
     const User={
         Name:name,
         Mail:mail,
         Password:password
+    }
+
+    let nameRegEx=/^[A-Za-z]+$/
+    let nameCheck=nameRegEx.test(User.Name)
+    let emailRegEx=/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/
+    let mailCheck=emailRegEx.test(User.Mail)
+    let passwordRegEx=/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
+    let passwordCheck=passwordRegEx.test(User.Password)
+
+    if(!nameCheck)
+    {
+      setNameError(true)
+    }
+    if(!mailCheck)
+    {
+     setmailError(true)
+    }
+    if(!passwordCheck)
+    {
+      setPasswordError(true)
     }
   let data=localStorage.getItem("register_Details");
 
@@ -26,40 +48,38 @@ export default function Register()
         data=[];
         data.push(User);
         localStorage.setItem("register_Details",JSON.stringify(data))
-        nav('/loginPage',{state:""})
+        if(mailCheck==true && nameCheck==true && passwordCheck==true)
+        {
+          nav('/loginPage',{state:""})
+        }
+        else
+        {
+          console.log("wrong email")
+        }
+
     }
     else
     {
         let Newdata=JSON.parse(data)
         Newdata.push(User)
         localStorage.setItem("register_Details",JSON.stringify(Newdata))
-        nav('/loginPage',{state:""})
+
+        if(mailCheck==true && nameCheck==true && passwordCheck==true)
+        {
+          nav('/loginPage',{state:""})
+        }
+        else
+        {
+          console.log("wrong email")
+        }
+       
     }
   }
   const redirectHandler =() =>{
     nav('/loginpage',{state: {}})
   }
-
-  // let email=document.getElementById(mail).value
-  // let span=document.getElementsByTagName(span)
-
-  // email.onkeydown=function()
-  // {
-  //   const regex=/^([\.\_a_zA_Z0_9]+)@([a_zA_Z]+)\.([a_zA_Z]){2,8}$/
-  //   const regexO=/^([\.\_a_zA_Z0_9]+)@([a_zA_Z]+)\.([a_zA_Z]){2,3}\.[a_zA_Z]{ 1,3}$/
-
-  //   if(regex.test(email.value) || regexO.test(email.value) )
-  //   {
-  //     span[0].innerText="ur email is valid"
-    
-  //   }
-  //   else
-  //   {
-  //     span[0].innerText="ur email is Invalid"
-  //   }
-  return (
-   
-    <Box
+return (
+   <Box
     component="form"
       sx={{
         '& > :not(style)': { m: 1, width: '25ch' },
@@ -73,17 +93,17 @@ export default function Register()
         label="Name"
         value={name}
         onChange={e=>setName(e.target.value)}
-     />
-       <span></span>
+        />
+        {nameError && <p>name error</p>}
       <br></br>
-      <TextField
+     <TextField
         value={mail}
-        id='mail'
+        id='email'
         label="Email-id"
         defaultValue=""
         onChange={e=>setMail(e.target.value)}
       />
-       <span></span>
+      {mailError && <p>Wrong mail</p>}
       <br></br>
       <TextField
         value={password}
@@ -93,7 +113,7 @@ export default function Register()
         defaultValue=""
         onChange={e=>setPassword(e.target.value)}
       />
-      <span></span>
+      {passwordError && <p>wrong password</p>}
       <br></br>
       <Button onClick={handleSubmit} type="submit" variant="contained" disableElevation>
       Register
@@ -105,5 +125,4 @@ export default function Register()
     </Button>
     </Box>
   );
-    }
-  
+  }

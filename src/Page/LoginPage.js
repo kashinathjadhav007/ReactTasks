@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 export default function LoginPage() 
 {
+ const[mailError,setMailError]=useState(false);
  const [users,setUsers] =useState(
     {
         mail:"",
@@ -16,13 +17,32 @@ export default function LoginPage()
 const HandleChange =(e) =>{
       setUsers({
             ...users,
-            mail:e.target.value
+            mail:e.target.value,
+            Password:e.target.value
         })
     }
   let navigate = useNavigate();
-  const redirectHandler =() =>{
+    const redirectHandler =() =>{
+    let emailRegEx=/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/
+    let Email=users.mail;
+    let mailCheck=emailRegEx.test(Email)
+    let passwordRegEx=/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
+    let passwordCheck=passwordRegEx.test(users.Password)
+    if(!mailCheck)
+    {
+      setMailError(true);
+    }
+
+    if(mailCheck==true && passwordCheck==true)
+    {
     const token=localStorage.setItem("token","userdata");
     navigate('/welcome',{state: {users}})
+    }
+    else
+    {
+      console.log("enter correct mail & password")
+    }
+    
 }
 const redirectHandler1 =() =>{
   navigate('/register',{state: {}})
@@ -47,6 +67,7 @@ const redirectHandler1 =() =>{
         label="Email-id"
         defaultValue=""
       />
+      {mailError && <p>Wrong EMail</p>}
       <br></br>
       <TextField 
         id="password"
@@ -54,6 +75,7 @@ const redirectHandler1 =() =>{
         type="password"
         hidden="false"
         defaultValue=""
+        onChange={HandleChange}
       />
       <br></br>
       <Button onClick={redirectHandler} variant="contained" disableElevation>
