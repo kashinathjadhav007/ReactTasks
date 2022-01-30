@@ -36,20 +36,6 @@ const GetAPI = () => {
             })
         })
     }
-
-    function deleteUser(id) {
-        console.log(id)
-        fetch(`http://localhost:3001/users/${id}`,
-            {
-                method: 'DELETE'
-
-            }).then((result) => {
-                result.json().then((response) => {
-                    getData();
-                })
-            })
-
-    }
     function setUser(userid) {
         console.log("userId", userid)
         console.log(data)
@@ -101,6 +87,20 @@ const GetAPI = () => {
                 })
             })
         setOpen1(false);
+    }
+
+    function deleteUser(id) {
+        console.log(id)
+        fetch(`http://localhost:3001/users/${id}`,
+            {
+                method: 'DELETE'
+
+            }).then((result) => {
+                result.json().then((response) => {
+                    getData();
+                })
+            })
+
     }
     return (
         <>
