@@ -1,67 +1,46 @@
 {
-    "users":[
-        {
-          "id": 1,
-          "name": "Leanne Graham",
-          "username": "Bret",
-          "email": "Sincere@april.biz"
-          
-        },
-        {
-          "id": 2,
-          "name": "Ervin Howell",
-          "username": "Antonette",
-          "email": "Shanna@melissa.tv"
-        },
-        {
-          "id": 3,
-          "name": "Clementine Bauch",
-          "username": "Samantha",
-          "email": "Nathan@yesenia.net"
-        },
-        {
-          "id": 4,
-          "name": "Patricia Lebsack",
-          "username": "Karianne",
-          "email": "Julianne.OConner@kory.org"
-        },
-        {
-          "id": 5,
-          "name": "Chelsey Dietrich",
-          "username": "Kamren",
-          "email": "Lucio_Hettinger@annie.ca"
-        },
-        {
-          "id": 6,
-          "name": "Mrs. Dennis Schulist",
-          "username": "Leopoldo_Corkery",
-          "email": "Karley_Dach@jasper.info"
-        },
-        {
-          "id": 7,
-          "name": "Kurtis Weissnat",
-          "username": "Elwyn.Skiles",
-          "email": "Telly.Hoeger@billy.biz"
-        },
-        {
-          "id": 8,
-          "name": "Nicholas Runolfsdottir V",
-          "username": "Maxime_Nienow",
-          "email": "Chaim_McDermott@dana.io"
-
-        },
-        {
-          "id": 9,
-          "name": "Glenna Reichert",
-          "username": "Delphine",
-          "email": "Chaim_McDermott@dana.io"
-        },
-        {
-          "id": 10,
-          "name": "Clementina DuBuque",
-          "username": "Moriah.Stanton",
-          "email": "Rey.Padberg@karina.biz"
-         
-        }
-      ]}
-
+  "users": [
+    {
+      "id": 1,
+      "name": "Kashi",
+      "userName": "kashi123",
+      "email": "kashinathj007@gmail.com"
+    },
+    {
+      "id": 2,
+      "name": "Viju",
+      "userName": "Viju",
+      "email": "vijay@gmail.com"
+    },
+    {
+      "id": 3,
+      "name": "Vijay",
+      "userName": "Vijay123",
+      "email": "vijay@gmail.com"
+    },
+    {
+      "id": 4,
+      "name": "Piyu",
+      "userName": "piyu123",
+      "email": "piyu@gmail.com"
+    },
+    {
+      "id": 5,
+      "name": "Clementina DuBuque",
+      "userName": "clena11",
+      "email": "Rey.Padberg@karina.biz"
+    },
+    {
+      "id": "6",
+      "name": "snehe",
+      "userName": "Sneha123",
+      "email": "sneha@gmail.com"
+    },
+    {
+      "id": "99",
+      "name": "Piyu",
+      "userName": "piyu123",
+      "email": "piyu@gmail.com"
+    }
+  ]
+}
