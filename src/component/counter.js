@@ -9,7 +9,8 @@ class Counter extends react.Component
             count1:10
            }
 }
-incrementFun(){
+incrementFun()
+{
         this.setState({count:this.state.count+1})
         }
     decrementFun(){

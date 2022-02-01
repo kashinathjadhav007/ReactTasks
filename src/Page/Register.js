@@ -52,11 +52,7 @@ export default function Register()
         {
           nav('/loginPage',{state:""})
         }
-        else
-        {
-          console.log("wrong email")
-        }
-
+       
     }
     else
     {

@@ -1,11 +1,8 @@
 import { BrowserRouter,Routes,Route } from "react-router-dom";
-import { AboutUs,DashBoard,FormDialog,Register,LoginPage} from "./Page/index";
-import Login from "./Page/login"
-import Form from "./Page/form";
+import { AboutUs,DashBoard,FormDialog,Register,LoginPage,Form,Login,Contact} from "./Page/index";
 import Autocounter from "./Page/autocounter";
 import { Button } from "./component";
 import { Counter } from "./component";
-import Contact from "./Page/contact";
 import WelcomePage from "./Page/welcomePage"
 import { PrivateRoute } from "./Route/privateRoute";
 const Router=(prop)=>{

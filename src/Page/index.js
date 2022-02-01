@@ -6,4 +6,6 @@ export {default as FormDialog} from "./formDialogue"
 export {default as Register} from "./Register"
 export {default as LoginPage} from "./LoginPage"
 export {default as welcomePage} from "./welcomePage"
+export {default as Form} from "./form"
+export {default as Contact} from "./contact"
 

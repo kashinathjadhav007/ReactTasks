@@ -1,10 +1,13 @@
 import Router from "./Router";
-import { Header, Left, Right, Second, Left1 } from "./component/style";
 import { useState} from "react";
 import ThemeContext,{UseTheme} from "./Context/themeContext";
+import useCount from "./Hooks/useCount";
+
 const App = () => {
   const [theme,setTheme]=useState(UseTheme.theme1);
   const value= {theme}
+
+  const data=useCount();
   const aboutdata = {
     image: "./image/img.png",
     author: "f_karayannopoulops@firm.com",
@@ -21,7 +24,11 @@ const App = () => {
       <ThemeContext.Provider value={value} >
     <Router text={aboutdata} />
    </ThemeContext.Provider>
+   <h2>Count up: {data.count}</h2>
+   <button onClick={data.handleIncrement}>Increment</button>
     </div>
+
+
    );
 }
 

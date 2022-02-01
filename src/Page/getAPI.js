@@ -4,9 +4,7 @@ import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-
+import DialogTitle from '@mui/material/DialogTitle'
 const GetAPI = () => {
     const [open, setOpen] = React.useState(false);
     const [open1, setOpen1] = React.useState(false);
@@ -16,7 +14,7 @@ const GetAPI = () => {
     const [userName, setUserName] = useState("")
     const [email, setMail] = useState("")
 
-    const handleClickOpen1 = () => {
+    const handleClickOpen1 = (e) => {
         setOpen1(true);
     };
     const handleClose = () => {
@@ -37,9 +35,7 @@ const GetAPI = () => {
         })
     }
     function setUser(userid) {
-        console.log("userId", userid)
-        console.log(data)
-        console.log(data[userid - 1])
+
         let item = data[userid - 1];
         setId(item.id);
         setName(item.name);
@@ -47,6 +43,7 @@ const GetAPI = () => {
         setMail(item.email)
         setOpen(true);
     }
+
     function updateData() {
         let item = { id, name, userName, email }
 
@@ -68,10 +65,13 @@ const GetAPI = () => {
     }
 
     function saveUser() {
-        console.log(id, name, userName, email)
-
         let item = { id, name, userName, email }
 
+        const idRegEx=/^[0-9]/
+        const Checkid=idRegEx.test(item.id)
+        console.log("id",Checkid)
+        if(Checkid==true)
+        {
         fetch(`http://localhost:3001/users`,
             {
                 method: 'POST',
@@ -82,10 +82,12 @@ const GetAPI = () => {
                 body: JSON.stringify(item)
 
             }).then((result) => {
-                result.json().then((response) => {
-                    getData();
-                })
+                result.json().then((response) => 
+                {
+                  getData();
+                  })
             })
+        }    
         setOpen1(false);
     }
 
@@ -94,8 +96,8 @@ const GetAPI = () => {
         fetch(`http://localhost:3001/users/${id}`,
             {
                 method: 'DELETE'
-
-            }).then((result) => {
+            }).then((result) => 
+            {
                 result.json().then((response) => {
                     getData();
                 })
@@ -116,7 +118,6 @@ const GetAPI = () => {
                         label="UserId"
                         fullWidth
                         variant="standard"
-                        value={id}
                         onChange={(e) => setId(e.target.value)}
                     />
                     <TextField
@@ -126,7 +127,6 @@ const GetAPI = () => {
                         label="Name"
                         fullWidth
                         variant="standard"
-                        value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
                     <TextField
@@ -136,7 +136,6 @@ const GetAPI = () => {
                         label="Username"
                         fullWidth
                         variant="standard"
-                        value={userName}
                         onChange={(e) => setUserName(e.target.value)}
                     />
                     <TextField
@@ -147,7 +146,6 @@ const GetAPI = () => {
                         type="email"
                         fullWidth
                         variant="standard"
-                        value={email}
                         onChange={(e) => setMail(e.target.value)}
                     />
                 </DialogContent>
@@ -165,8 +163,8 @@ const GetAPI = () => {
                     <td>Action</td>
                 </tr>
                 {
-                    data.map((item, i) =>
-                        <tr key={i}>
+                    data.map((item) =>
+                        <tr>
                             <td>{item.id}</td>
                             <td>{item.name}</td>
                             <td>{item.userName}</td>
@@ -175,7 +173,6 @@ const GetAPI = () => {
                                 <Button variant="outlined" onClick={() => deleteUser(item.id)}>Delete</Button>
                             </td>
                         </tr>)
-
                 }
             </table>
             <div>
