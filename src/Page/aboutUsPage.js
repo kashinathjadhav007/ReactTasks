@@ -1,5 +1,5 @@
-import { Header,Left,Right,Second,Left1} from "../component/style";
 import { useContext } from "react";
+import { Header,Left,Right,Second,Left1} from "../component/style";
 import ThemeContext from "../Context/themeContext";
 const AboutUsPage=(prop)=>
 {

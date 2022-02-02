@@ -1,24 +1,24 @@
 import {Nav,UL} from "../component/style"
+import { Link } from "react-router-dom"
 const Header=()=>
 {
     const removeToken=()=>{
         localStorage.removeItem("token")
     }
     return(
-        
-            <div>
+         <div>
             <Nav>
                <UL>
-                   <li><a href="http://localhost:3000/contact">Contact</a></li>
-                   <li><a href="http://localhost:3000">DashBoard</a></li>
-                   <li><a href="http://localhost:3000/about">About US</a></li>
-                   <li><a href="http://localhost:3000/button">Button Varients</a></li>
-                   <li><a href="http://localhost:3000/counter">Counter</a></li>
-                   <li><a href="http://localhost:3000/login">Login</a></li>
-                   <li><a href="http://localhost:3000/autocounter">AutoCounter</a></li>
-                   <li><a href="http://localhost:3000/Muimodel">MUI Model</a></li>
-                   <li><a href="http://localhost:3000/register">MUI Login</a></li>
-                   <li><a href="" onClick={removeToken}>Logout</a></li>
+                   <li><Link to="/contact">Contact</Link></li>
+                   <li><Link to="/">DashBoard</Link></li>
+                   <li><Link to="/about">About US</Link></li>
+                   <li><Link to="/button">Button Varients</Link></li>
+                   <li><Link to="/counter">Counter</Link></li>
+                   <li><Link to="/login">Login</Link></li>
+                   <li><Link to="/autocounter">AutoCounter</Link></li>
+                   <li><Link to="/Muimodel">MUI Model</Link></li>
+                   <li><Link to="/register">MUI Login</Link></li>
+                   <li><Link to="" onClick={removeToken}>Logout</Link></li>
                    
                </UL>
             </Nav>

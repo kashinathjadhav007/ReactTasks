@@ -10,6 +10,7 @@ export default function LoginPage()
  const[mailError,setMailError]=useState(false);
  const [users,setUsers] =useState(
     {
+      
         mail:"",
         Password:"",
     }

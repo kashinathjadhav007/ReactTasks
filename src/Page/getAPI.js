@@ -5,6 +5,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle'
+
 const GetAPI = () => {
     const [open, setOpen] = React.useState(false);
     const [open1, setOpen1] = React.useState(false);
@@ -23,10 +24,9 @@ const GetAPI = () => {
     const handleClose1 = () => {
         setOpen1(false);
     };
-
     useEffect(() => {
         getData();
-    }, [])
+    },[])
     function getData() {
         fetch("http://localhost:3001/users").then((result) => {
             result.json().then((response) => {
@@ -67,28 +67,33 @@ const GetAPI = () => {
     function saveUser() {
         let item = { id, name, userName, email }
 
-        const idRegEx=/^[0-9]/
-        const Checkid=idRegEx.test(item.id)
-        console.log("id",Checkid)
-        if(Checkid==true)
-        {
-        fetch(`http://localhost:3001/users`,
-            {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(item)
+        const idRegEx = /^[0-9]/
+        const Checkid = idRegEx.test(item.id)
 
-            }).then((result) => {
-                result.json().then((response) => 
+        let nameRegEx=/^[A-Za-z]+$/
+        let nameCheck=nameRegEx.test(item.name)
+
+        let emailRegEx=/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/
+        let mailCheck=emailRegEx.test(item.email)
+
+        
+        if (Checkid == true && mailCheck==true && nameCheck==true) {
+            fetch(`http://localhost:3001/users`,
                 {
-                  getData();
-                  })
-            })
-        }    
-        setOpen1(false);
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(item)
+
+                }).then((result) => {
+                    result.json().then((response) => {
+                        getData();
+                    })
+                })
+                setOpen1(false);
+        }
     }
 
     function deleteUser(id) {
@@ -96,8 +101,7 @@ const GetAPI = () => {
         fetch(`http://localhost:3001/users/${id}`,
             {
                 method: 'DELETE'
-            }).then((result) => 
-            {
+            }).then((result) => {
                 result.json().then((response) => {
                     getData();
                 })
@@ -155,6 +159,7 @@ const GetAPI = () => {
                 </DialogActions>
             </Dialog>
             <table border="1">
+                <tbody>
                 <tr>
                     <td>userId</td>
                     <td>Name</td>
@@ -164,7 +169,7 @@ const GetAPI = () => {
                 </tr>
                 {
                     data.map((item) =>
-                        <tr>
+                        <tr key={item.id}>
                             <td>{item.id}</td>
                             <td>{item.name}</td>
                             <td>{item.userName}</td>
@@ -173,7 +178,10 @@ const GetAPI = () => {
                                 <Button variant="outlined" onClick={() => deleteUser(item.id)}>Delete</Button>
                             </td>
                         </tr>)
-                }
+}
+                </tbody>
+                
+                
             </table>
             <div>
                 <Dialog open={open} onClose={handleClose}>

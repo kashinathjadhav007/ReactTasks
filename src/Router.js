@@ -1,5 +1,5 @@
 import { BrowserRouter,Routes,Route } from "react-router-dom";
-import { AboutUs,DashBoard,FormDialog,Register,LoginPage,Form,Login,Contact} from "./Page/index";
+import { AboutUs,DashBoard,FormDialog,Register,LoginPage,Form,Login,Contact} from "./Page/";
 import Autocounter from "./Page/autocounter";
 import { Button } from "./component";
 import { Counter } from "./component";

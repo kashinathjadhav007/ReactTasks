@@ -32,15 +32,9 @@
     },
     {
       "id": "6",
-      "name": "Ajay",
-      "userName": "ajay123",
-      "email": "ajay@gmail.com"
-    },
-    {
-      "id": "7",
-      "name": "sanku",
-      "userName": "sanku123",
-      "email": "sanku@gmaill.com"
+      "name": "Sanvi",
+      "userName": "sanvi123",
+      "email": "sanvi@gmail.com"
     }
   ]
 }
