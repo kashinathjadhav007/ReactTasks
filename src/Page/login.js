@@ -1,7 +1,7 @@
 import {useState} from "react"
 import {useNavigate} from "react-router-dom"
-import Form from "./form";
 import { Input,Label } from "../component/style";
+import { Box } from "@mui/material";
 const Login =()=>{
 const [users,setUsers] =useState(
         {
@@ -28,9 +28,24 @@ const [users,setUsers] =useState(
     }
     return(
         <>
-          <>
+        
             <h1>Login form</h1>
-             <Label>Name</Label>
+            <Box sx={{
+      boxShadow: 3,
+      width: '20rem',
+      height: '24rem',
+      bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
+      color: (theme) =>
+        theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
+      p: 1,
+      m: 1,
+      borderRadius: 2,
+      textAlign: 'center',
+      fontSize: '0.875rem',
+      fontWeight: '700',
+    }}>
+        
+           <Label>Name</Label>
              <Input type="text" id="name" onChange={HandleChange}/>  
              <Label>mail</Label>
              <Input type="email" id="email" onChange={HandleChange}  />
@@ -38,7 +53,7 @@ const [users,setUsers] =useState(
              <Input type="password" id="password" onChange={HandleChange}  />  
              <br></br>
              <button onClick={redirectHandler}> Submit</button>
-         </>
+            </Box>
         </>
     )
 }

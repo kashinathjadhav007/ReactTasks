@@ -5,6 +5,47 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle'
+import { styled } from '@mui/material/styles';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+      backgroundColor: theme.palette.common.black,
+      color: theme.palette.common.white,
+    },
+    [`&.${tableCellClasses.body}`]: {
+      fontSize: 14,
+    },
+  }));
+  
+  const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.action.hover,
+    },
+    // hide last border
+    '&:last-child td, &:last-child th': {
+      border: 0,
+    },
+  }));
+  
+  function createData(name, calories, fat, carbs, protein) {
+    return { name, calories, fat, carbs, protein };
+  }
+  
+  const rows = [
+    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+    createData('Eclair', 262, 16.0, 24, 6.0),
+    createData('Cupcake', 305, 3.7, 67, 4.3),
+    createData('Gingerbread', 356, 16.0, 49, 3.9),
+  ];
 
 const GetAPI = () => {
     const [open, setOpen] = React.useState(false);
@@ -14,6 +55,9 @@ const GetAPI = () => {
     const [name, setName] = useState("")
     const [userName, setUserName] = useState("")
     const [email, setMail] = useState("")
+    const idRegEx = /^[0-9]/
+    let nameRegEx=/^[A-Za-z]+$/
+    let emailRegEx=/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/
 
     const handleClickOpen1 = (e) => {
         setOpen1(true);
@@ -46,7 +90,11 @@ const GetAPI = () => {
 
     function updateData() {
         let item = { id, name, userName, email }
-
+        let nameCheck=nameRegEx.test(item.name)
+        let mailCheck=emailRegEx.test(item.email)
+        const Checkid = idRegEx.test(item.id)
+        if(Checkid==true && nameCheck==true && mailCheck==true)
+        {
         fetch(`http://localhost:3001/users/${id}`,
             {
                 method: 'PUT',
@@ -62,18 +110,14 @@ const GetAPI = () => {
                 })
             })
         setOpen(false);
+        }
+        
     }
 
     function saveUser() {
         let item = { id, name, userName, email }
-
-        const idRegEx = /^[0-9]/
         const Checkid = idRegEx.test(item.id)
-
-        let nameRegEx=/^[A-Za-z]+$/
         let nameCheck=nameRegEx.test(item.name)
-
-        let emailRegEx=/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/
         let mailCheck=emailRegEx.test(item.email)
 
         
@@ -112,6 +156,7 @@ const GetAPI = () => {
         <>
             <h2>Fetched data</h2>
             <Button variant="outlined" onClick={handleClickOpen1}>Add New User</Button>
+            <br></br>
             <Dialog open={open1} onClose={handleClose1}>
                 <DialogTitle>Add new user</DialogTitle>
                 <DialogContent>
@@ -158,31 +203,6 @@ const GetAPI = () => {
                     <Button onClick={saveUser}>Add Data</Button>
                 </DialogActions>
             </Dialog>
-            <table border="1">
-                <tbody>
-                <tr>
-                    <td>userId</td>
-                    <td>Name</td>
-                    <td>user Name</td>
-                    <td>Email address</td>
-                    <td>Action</td>
-                </tr>
-                {
-                    data.map((item) =>
-                        <tr key={item.id}>
-                            <td>{item.id}</td>
-                            <td>{item.name}</td>
-                            <td>{item.userName}</td>
-                            <td>{item.email}</td>
-                            <td> <Button variant="outlined" onClick={() => setUser(item.id)}>Edit</Button>
-                                <Button variant="outlined" onClick={() => deleteUser(item.id)}>Delete</Button>
-                            </td>
-                        </tr>)
-}
-                </tbody>
-                
-                
-            </table>
             <div>
                 <Dialog open={open} onClose={handleClose}>
                     <DialogTitle>Edit the Data</DialogTitle>
@@ -235,6 +255,35 @@ const GetAPI = () => {
                     </DialogActions>
                 </Dialog>
             </div>
+
+            <br></br>
+            <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 700 }} aria-label="customized table">
+        <TableHead>
+          <TableRow>
+            <StyledTableCell>ID</StyledTableCell>
+            <StyledTableCell>Full Name</StyledTableCell>
+            <StyledTableCell >Userid</StyledTableCell>
+            <StyledTableCell >User Email</StyledTableCell>
+            <StyledTableCell >Action</StyledTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {data.map((item) => (
+            <StyledTableRow key={item.id}>
+              <StyledTableCell>{item.id}</StyledTableCell>
+              <StyledTableCell >{item.name}</StyledTableCell>
+              <StyledTableCell >{item.userName}</StyledTableCell>
+              <StyledTableCell >{item.email}</StyledTableCell>
+              <StyledTableCell >
+              <Button variant="outlined" onClick={() => setUser(item.id)}>Edit</Button>
+              <Button variant="outlined" onClick={() => deleteUser(item.id)}>Delete</Button>
+              </StyledTableCell>
+            </StyledTableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
         </>
     )
 }
