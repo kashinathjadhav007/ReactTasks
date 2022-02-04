@@ -32,8 +32,8 @@ const [users,setUsers] =useState(
             <h1>Login form</h1>
             <Box sx={{
       boxShadow: 3,
-      width: '20rem',
-      height: '24rem',
+      width: '15rem',
+      height: '10rem',
       bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
       color: (theme) =>
         theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
@@ -51,6 +51,7 @@ const [users,setUsers] =useState(
              <Input type="email" id="email" onChange={HandleChange}  />
              <Label>Password</Label> 
              <Input type="password" id="password" onChange={HandleChange}  />  
+             <br></br>
              <br></br>
              <button onClick={redirectHandler}> Submit</button>
             </Box>

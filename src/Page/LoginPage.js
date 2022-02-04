@@ -8,9 +8,9 @@ import { useState } from 'react';
 export default function LoginPage() 
 {
  const[mailError,setMailError]=useState(false);
+ const[passwordError,setPasswordError]=React.useState(false)
  const [users,setUsers] =useState(
     {
-      
         mail:"",
         Password:"",
     }
@@ -25,13 +25,16 @@ const HandleChange =(e) =>{
   let navigate = useNavigate();
     const redirectHandler =() =>{
     let emailRegEx=/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/
-    let Email=users.mail;
-    let mailCheck=emailRegEx.test(Email)
+    let mailCheck=emailRegEx.test(users.Email)
     let passwordRegEx=/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
     let passwordCheck=passwordRegEx.test(users.Password)
     if(!mailCheck)
     {
       setMailError(true);
+    }
+    if(!passwordCheck)
+    {
+      setPasswordError(true);
     }
 
     if(mailCheck==true && passwordCheck==true)
@@ -56,7 +59,7 @@ const redirectHandler1 =() =>{
     sx={{
       boxShadow: 3,
       width: '20rem',
-      height: '30rem',
+      height: '35rem',
       bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
       color: (theme) =>
         theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
@@ -70,7 +73,7 @@ const redirectHandler1 =() =>{
       noValidate
       autoComplete="off"
     >
-    <h1>login page</h1>
+    <h1>welcome to Login page</h1>
     <br></br>
     <h3>Sign into your account</h3>
     <br></br>
@@ -90,13 +93,14 @@ const redirectHandler1 =() =>{
         defaultValue=""
         onChange={HandleChange}
       />
+      {passwordError && <p>Wrong password</p>}
       <br></br>
       <br></br>
       <Button onClick={redirectHandler} variant="contained" disableElevation>
       Submit
     </Button>
     <br></br>
-   <h4>Or</h4>
+   <h4>OR</h4>
     <Button onClick={redirectHandler1} variant="contained" disableElevation>
       Register
     </Button>

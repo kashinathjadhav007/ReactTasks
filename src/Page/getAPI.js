@@ -55,7 +55,7 @@ const GetAPI = () => {
     const [name, setName] = useState("")
     const [userName, setUserName] = useState("")
     const [email, setMail] = useState("")
-    const idRegEx = /^[0-9]/
+    const idRegEx = /^(\+\d{1,3}[- ]?)?\d{10}$/
     let nameRegEx=/^[A-Za-z]+$/
     let emailRegEx=/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/
 
@@ -121,7 +121,8 @@ const GetAPI = () => {
         let mailCheck=emailRegEx.test(item.email)
 
         
-        if (Checkid == true && mailCheck==true && nameCheck==true) {
+        if (Checkid == true && mailCheck==true && nameCheck==true)
+         {
             fetch(`http://localhost:3001/users`,
                 {
                     method: 'POST',

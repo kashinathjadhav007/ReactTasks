@@ -80,7 +80,7 @@ return (
     sx={{
       boxShadow: 3,
       width: '20rem',
-      height: '24rem',
+      height: '38rem',
       bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
       color: (theme) =>
         theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
@@ -94,6 +94,7 @@ return (
       noValidate
       autoComplete="off"
     >
+    <h1 style={{color:"light-green"}}>Welcome!</h1>
     <h3>Register Page</h3>
       <TextField
         id="name"
